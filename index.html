@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Запись на занятияя</title>
+  <title>Запись на занятия</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
@@ -82,30 +82,27 @@
 
   <script>
     document.getElementById('openWidgetBtn').addEventListener('click', function() {
-      // Проверяем, загружен ли скрипт виджета
+      // Если скрипт виджета ещё не загружен, загружаем его
       if (!document.getElementById('aeWidgetScript')) {
         const script = document.createElement('script');
         script.id = 'aeWidgetScript';
         script.type = 'text/javascript';
         script.async = true;
         script.charset = 'UTF-8';
-
-        // Добавляем UTM-параметры, если есть
-        const urlParams = new URLSearchParams(window.location.search);
-        const utm = [];
-        urlParams.forEach((value, key) => {
-          if (key.startsWith('utm_')) utm.push(key + '=' + value);
-        });
-
-        // Ссылка с хэшем, чтобы виджет сразу открывался на расписании
-        let src = '//appevent.ru/widgets/widgethandle.min.js?type=landing&widget_key=1ada18722f774a0a747b5ec63322df57#aeWidgetOpen-order_type=lesson';
-        if (utm.length > 0) src += '&' + utm.join('&');
-
-        script.src = src;
+        script.src = '//appevent.ru/widgets/widgethandle.min.js?type=landing&widget_key=1ada18722f774a0a747b5ec63322df57';
         document.body.appendChild(script);
+
+        // Когда скрипт загрузился, открываем виджет напрямую
+        script.onload = function() {
+          if (window.AEWidget) {
+            AEWidget.open('order_type=lesson'); // открываем виджет сразу на расписании
+          }
+        }
       } else {
-        // Скрипт уже загружен — просто открываем виджет через хэш
-        window.location.hash = 'aeWidgetOpen-order_type=lesson';
+        // Скрипт уже есть, просто открываем виджет напрямую
+        if (window.AEWidget) {
+          AEWidget.open('order_type=lesson');
+        }
       }
     });
   </script>
