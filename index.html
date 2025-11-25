@@ -5,31 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Запись на занятия</title>
 
-  <!-- Yandex.Metrika counter -->
-  <script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {
-            if (document.scripts[j].src === r) { return; }
-        }
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105507617', 'ym');
-
-    ym(105507617, 'init', {
-        ssr:true,
-        webvisor:true,
-        clickmap:true,
-        ecommerce:"dataLayer",
-        accurateTrackBounce:true,
-        trackLinks:true
-    });
-  </script>
-  <noscript>
-    <div><img src="https://mc.yandex.ru/watch/105507617" style="position:absolute; left:-9999px;" alt="" /></div>
-  </noscript>
-  <!-- /Yandex.Metrika counter -->
-
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
 
@@ -90,20 +65,11 @@
       transform: translateY(-2px);
       box-shadow: 0 6px 14px rgba(0,0,0,0.25);
     }
-    .widget-wrapper {
-      width: 100%;
-      min-height: 600px;
-      margin: 20px 0;
-      padding: 0 20px 20px 20px;
-      box-sizing: border-box;
-    }
   </style>
 </head>
 <body>
 
   <div class="container">
-
-    <!-- Шапка -->
     <div class="header">
       <h1>Velar Dance</h1>
     </div>
@@ -112,18 +78,11 @@
 
     <!-- Кнопка "Записаться" -->
     <button class="btn" id="openWidgetBtn">Записаться</button>
-
-    <!-- Контейнер для виджета -->
-    <div class="widget-wrapper" id="widgetContainer"></div>
-
   </div>
 
   <script>
-    // Динамическое подключение виджета при клике на кнопку
     document.getElementById('openWidgetBtn').addEventListener('click', function() {
-      const container = document.getElementById('widgetContainer');
-      
-      // Если скрипт уже вставлен, не вставляем заново
+      // Проверяем, вставлен ли скрипт
       if (!document.getElementById('aeWidgetScript')) {
         const script = document.createElement('script');
         script.id = 'aeWidgetScript';
@@ -138,13 +97,14 @@
           if (key.startsWith('utm_')) utm.push(key + '=' + value);
         });
 
-        let src = '//appevent.ru/widgets/widgethandle.min.js?type=landing&widget_key=1ada18722f774a0a747b5ec63322df57';
+        let src = '//appevent.ru/widgets/widgethandle.min.js?type=landing&widget_key=1ada18722f774a0a747b5ec63322df57#aeWidgetOpen-order_type=lesson';
         if (utm.length > 0) src += '&' + utm.join('&');
 
         script.src = src;
-
-        // Вставляем скрипт в контейнер
-        container.appendChild(script);
+        document.body.appendChild(script);
+      } else {
+        // Если скрипт уже вставлен, просто открываем виджет через хэш
+        window.location.hash = 'aeWidgetOpen-order_type=lesson';
       }
     });
   </script>
