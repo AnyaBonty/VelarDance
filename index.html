@@ -81,6 +81,8 @@
       padding:12px 30px;
       cursor:pointer;
       box-shadow:0 4px 10px rgba(0,0,0,0.2);
+      text-decoration:none;
+      display:inline-block;
       transition:transform 0.2s, box-shadow 0.2s;
     }
     .btn:hover {
@@ -98,38 +100,13 @@
 
     <h1>Запись на занятия</h1>
 
-    <!-- Кнопка "Записаться" -->
-    <button class="btn" id="openWidgetBtn">Записаться</button>
+    <!-- Кнопка "Записаться" через ссылку с хэшем -->
+    <a class="btn" href="#aeWidgetOpen-order_type=lesson">Записаться</a>
+
   </div>
 
-  <script>
-    document.getElementById('openWidgetBtn').addEventListener('click', function() {
-      // Собираем UTM-параметры из URL
-      const urlParams = new URLSearchParams(window.location.search);
-      const utm = [];
-      urlParams.forEach((value, key) => {
-        if (key.startsWith('utm_')) utm.push(key + '=' + value);
-      });
-
-      // Формируем URL скрипта с UTM и хэшем для открытия виджета
-      let widgetSrc = '//appevent.ru/widgets/widgethandle.min.js?type=landing&widget_key=1ada18722f774a0a747b5ec63322df57#aeWidgetOpen-order_type=lesson';
-      if (utm.length > 0) widgetSrc += '&' + utm.join('&');
-
-      // Если скрипт ещё не вставлен, вставляем его
-      if (!document.getElementById('aeWidgetScript')) {
-        const script = document.createElement('script');
-        script.id = 'aeWidgetScript';
-        script.type = 'text/javascript';
-        script.async = true;
-        script.charset = 'UTF-8';
-        script.src = widgetSrc;
-        document.body.appendChild(script);
-      } else {
-        // Скрипт уже есть — просто меняем хэш для открытия виджета
-        window.location.hash = 'aeWidgetOpen-order_type=lesson';
-      }
-    });
-  </script>
+  <!-- Виджет AppEvent -->
+  <script id="aeWidgetScript" type="text/javascript" src="//appevent.ru/widgets/widgethandle.min.js?type=landing&widget_key=1ada18722f774a0a747b5ec63322df57" async charset="UTF-8"></script>
 
 </body>
 </html>
