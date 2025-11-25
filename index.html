@@ -5,42 +5,90 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Запись на занятия</title>
 
-  <!-- Yandex.Metrika counter -->
+  <!-- Яндекс.Метрика -->
   <script type="text/javascript">
-      (function(m,e,t,r,i,k,a){
-          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-          m[i].l=1*new Date();
-          for (var j=0;j<document.scripts.length;j++){
-              if(document.scripts[j].src===r){return;}
-          }
-          k=e.createElement(t),a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)
-      })(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=105507617','ym');
+    (function(m,e,t,r,i,k,a){
+      m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)
+    })(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=105507617','ym');
 
-      ym(105507617,'init',{
-          ssr:true,
-          webvisor:true,
-          clickmap:true,
-          ecommerce:"dataLayer",
-          accurateTrackBounce:true,
-          trackLinks:true
-      });
+    ym(105507617,'init',{
+      ssr:true,
+      webvisor:true,
+      clickmap:true,
+      ecommerce:"dataLayer",
+      accurateTrackBounce:true,
+      trackLinks:true
+    });
   </script>
   <noscript>
-      <div><img src="https://mc.yandex.ru/watch/105507617" style="position:absolute; left:-9999px;" alt="" /></div>
+    <div><img src="https://mc.yandex.ru/watch/105507617" style="position:absolute; left:-9999px;" alt="" /></div>
   </noscript>
-  <!-- /Yandex.Metrika counter -->
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
 
   <style>
-    body {margin:0;padding:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#e6e6e6,#d1d1d1);display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding-top:40px;}
-    .container {background:white;max-width:600px;width:100%;padding:0;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.1);text-align:center;}
-    .header {width:100%;background:linear-gradient(90deg,#ff7e5f,#feb47b);padding:25px 0;display:flex;justify-content:center;align-items:center;border-radius:16px 16px 0 0;box-shadow:0 4px 10px rgba(0,0,0,0.1);}
-    .header h1 {font-family:'Poppins',sans-serif;font-size:36px;color:white;text-shadow:1px 1px 4px rgba(0,0,0,0.3);margin:0;}
-    h1 {margin:20px 0;}
-    .btn {background:linear-gradient(90deg,#ff7e5f,#feb47b);color:white;font-family:'Poppins',sans-serif;font-size:20px;border:none;border-radius:12px;padding:12px 30px;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,0.2);transition:transform 0.2s, box-shadow 0.2s;}
-    .btn:hover {transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,0.25);}
+    body {
+      margin:0;
+      padding:0;
+      font-family:Arial,sans-serif;
+      background:linear-gradient(135deg,#e6e6e6,#d1d1d1);
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      min-height:100vh;
+      padding-top:40px;
+    }
+    .container {
+      background:white;
+      max-width:600px;
+      width:100%;
+      padding:0;
+      border-radius:16px;
+      box-shadow:0 4px 20px rgba(0,0,0,0.1);
+      text-align:center;
+    }
+    .header {
+      width:100%;
+      background:linear-gradient(90deg,#ff7e5f,#feb47b);
+      padding:25px 0;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      border-radius:16px 16px 0 0;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    }
+    .header h1 {
+      font-family:'Poppins',sans-serif;
+      font-size:36px;
+      color:white;
+      text-shadow:1px 1px 4px rgba(0,0,0,0.3);
+      margin:0;
+    }
+    h1 {
+      margin:20px 0;
+    }
+    .btn {
+      background:linear-gradient(90deg,#ff7e5f,#feb47b);
+      color:white;
+      font-family:'Poppins',sans-serif;
+      font-size:20px;
+      border:none;
+      border-radius:12px;
+      padding:12px 30px;
+      cursor:pointer;
+      box-shadow:0 4px 10px rgba(0,0,0,0.2);
+      text-decoration:none;
+      display:inline-block;
+      transition:transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover {
+      transform:translateY(-2px);
+      box-shadow:0 6px 14px rgba(0,0,0,0.25);
+    }
   </style>
 </head>
 <body>
@@ -52,32 +100,13 @@
 
     <h1>Запись на занятия</h1>
 
-    <button class="btn" id="openWidgetBtn">Записаться</button>
+    <!-- Кнопка "Записаться" через ссылку с хэшем -->
+    <a class="btn" href="#aeWidgetOpen-order_type=lesson">Записаться</a>
+
   </div>
 
-  <script>
-    document.getElementById('openWidgetBtn').addEventListener('click', function() {
-      if (!document.getElementById('aeWidgetScript')) {
-        const script = document.createElement('script');
-        script.id = 'aeWidgetScript';
-        script.type = 'text/javascript';
-        script.async = true;
-        script.charset = 'UTF-8';
-        script.src = '//appevent.ru/widgets/widgethandle.min.js?type=landing&widget_key=1ada18722f774a0a747b5ec63322df57';
-        document.body.appendChild(script);
-
-        script.onload = function() {
-          if (window.AEWidget) {
-            AEWidget.open('order_type=lesson'); // открываем виджет сразу на расписании
-          }
-        }
-      } else {
-        if (window.AEWidget) {
-          AEWidget.open('order_type=lesson');
-        }
-      }
-    });
-  </script>
+  <!-- Виджет AppEvent -->
+  <script id="aeWidgetScript" type="text/javascript" src="//appevent.ru/widgets/widgethandle.min.js?type=landing&widget_key=1ada18722f774a0a747b5ec63322df57" async charset="UTF-8"></script>
 
 </body>
 </html>
