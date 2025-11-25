@@ -82,7 +82,7 @@
 
   <script>
     document.getElementById('openWidgetBtn').addEventListener('click', function() {
-      // Проверяем, вставлен ли скрипт
+      // Проверяем, загружен ли скрипт виджета
       if (!document.getElementById('aeWidgetScript')) {
         const script = document.createElement('script');
         script.id = 'aeWidgetScript';
@@ -97,13 +97,14 @@
           if (key.startsWith('utm_')) utm.push(key + '=' + value);
         });
 
+        // Ссылка с хэшем, чтобы виджет сразу открывался на расписании
         let src = '//appevent.ru/widgets/widgethandle.min.js?type=landing&widget_key=1ada18722f774a0a747b5ec63322df57#aeWidgetOpen-order_type=lesson';
         if (utm.length > 0) src += '&' + utm.join('&');
 
         script.src = src;
         document.body.appendChild(script);
       } else {
-        // Если скрипт уже вставлен, просто открываем виджет через хэш
+        // Скрипт уже загружен — просто открываем виджет через хэш
         window.location.hash = 'aeWidgetOpen-order_type=lesson';
       }
     });
