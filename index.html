@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Запись на занятия — Velar Dance</title>
+  <title>Запись на занятия</title>
 
   <!-- Яндекс.Метрика -->
   <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
-      m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i]=m[i]function(){(m[i].a=m[i].a[]).push(arguments)};
       m[i].l=1*new Date();
       for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
       k=e.createElement(t),a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)
     })(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=105507617','ym');
+
     ym(105507617,'init',{
       ssr:true,
       webvisor:true,
@@ -22,7 +23,9 @@
       trackLinks:true
     });
   </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/105507617" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <noscript>
+    <div><img src="https://mc.yandex.ru/watch/105507617" style="position:absolute; left:-9999px;" alt="" /></div>
+  </noscript>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
@@ -99,106 +102,21 @@
   </style>
 </head>
 <body>
+
   <div class="container">
     <div class="header">
       <h1>Velar Dance</h1>
     </div>
+
     <h2>Запишись на занятия уже сегодня!</h2>
-    <p>Выбирай удобное время и стиль танцев. Мы ждем тебя в нашей дружной команде!</p>
-    
-    <!-- Кнопка с передачей всех UTM в AppEvent -->
-    <button class="btn" onclick="openAeWidgetWithUtms()">Записаться</button>
+    <p>Выбирай удобное время и стиль танцев. Мы ждем тебя в нашей дружной команде! Просто нажми кнопку ниже и откроется форма записи.</p>
+
+    <!-- Кнопка "Записаться" через ссылку с хэшем -->
+    <a class="btn" href="#aeWidgetOpen-order_type=lesson">Записаться</a>
   </div>
 
   <!-- Виджет AppEvent -->
-  <script id="aeWidgetScript" type="text/javascript" 
-    src="//appevent.ru/widgets/widgethandle.min.js?type=landing&widget_key=1ada18722f774a0a747b5ec63322df57" 
-    async charset="UTF-8"></script>
+  <script id="aeWidgetScript" type="text/javascript" src="//appevent.ru/widgets/widgethandle.min.js?type=landing&widget_key=1ada18722f774a0a747b5ec63322df57" async charset="UTF-8"></script>
 
-  <!-- === СКРИПТЫ ДЛЯ UTM-МЕТОК === -->
-  <script>
-    // 1. Вспомогательные функции для работы с cookies
-    function setCookie(name, value, days = 30) {
-      const d = new Date();
-      d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
-      document.cookie = name + '=' + encodeURIComponent(value) + ';expires=' + d.toUTCString() + ';path=/';
-    }
-
-    function getCookie(name) {
-      const match = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
-      return match ? decodeURIComponent(match[1]) : null;
-    }
-
-    // 2. Сохраняем UTM-метки в cookie при первой загрузке
-    (function() {
-      const params = new URLSearchParams(location.search);
-      const neededKeys = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','utm_referrer','gclid','fbclid','yclid'];
-      const utms = {};
-      let hasUtms = false;
-
-      neededKeys.forEach(key => {
-        if (params.has(key)) {
-          utms[key] = params.get(key);
-          hasUtms = true;
-        }
-      });
-
-      if (hasUtms) {
-        setCookie('utm_marks', JSON.stringify(utms), 30);
-      }
-    })();
-
-    // 3. При каждой загрузке страницы восстанавливаем UTM в URL (чтобы Метрика видела)
-    window.addEventListener('load', function() {
-      if (location.search) return; // уже есть параметры — ничего не трогаем
-
-      const saved = getCookie('utm_marks');
-      if (!saved) return;
-
-      try {
-        const utms = JSON.parse(saved);
-        const newUrl = new URL(location);
-        Object.keys(utms).forEach(key => newUrl.searchParams.set(key, utms[key]));
-        history.replaceState(null, '', newUrl);
-        // Метрика автоматически перечитает параметры из URL
-      } catch(e) {}
-    });
-
-    // 4. Открытие виджета AppEvent с передачей всех UTM
-    function openAeWidgetWithUtms() {
-      const urlParams = new URLSearchParams(location.search);
-      const params = new URLSearchParams();
-
-      // Берём из текущего URL
-      const keys = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','utm_referrer','gclid','fbclid','yclid'];
-      keys.forEach(key => {
-        if (urlParams.has(key)) params.set(key, urlParams.get(key));
-      });
-
-      // Если в URL пусто — берём из cookie (на случай перезагрузки виджетом)
-      if (!params.toString()) {
-        const saved = getCookie('utm_marks');
-        if (saved) {
-          try {
-            const savedObj = JSON.parse(saved);
-            Object.keys(savedObj).forEach(key => params.set(key, savedObj[key]));
-          } catch(e) {}
-        }
-      }
-
-      let command = 'aeWidgetOpen-order_type=lesson';
-      if (params.toString()) {
-        command += '&' + params.toString();
-      }
-
-      // Открываем виджет
-      if (window.aeWidgetHandle && typeof window.aeWidgetHandle.run === 'function') {
-        window.aeWidgetHandle.run(command);
-      } else {
-        // fallback
-        location.hash = command;
-      }
-    }
-  </script>
 </body>
 </html>
