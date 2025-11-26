@@ -3,216 +3,140 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Запись на занятия — Velar Dance</title>
+  <title>Velar Dance</title>
+
+  <!-- Подключение шрифта -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #e5e5e5;
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    .card {
+      width: 90%;
+      max-width: 650px;
+      background: white;
+      margin-top: 40px;
+      border-radius: 15px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      text-align: center;
+      padding-bottom: 40px;
+    }
+
+    .card-header {
+      background: linear-gradient(90deg, #ff8f6b, #ffb07b);
+      padding: 25px;
+      font-size: 32px;
+      color: white;
+      font-weight: 700;
+    }
+
+    .title {
+      margin-top: 25px;
+      font-size: 22px;
+      font-weight: 700;
+      color: #333;
+    }
+
+    .subtitle {
+      margin: 15px auto;
+      width: 85%;
+      font-size: 15px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .btn {
+      margin-top: 25px;
+      background: linear-gradient(90deg, #ff8f6b, #ffb07b);
+      border: none;
+      padding: 12px 28px;
+      color: white;
+      cursor: pointer;
+      font-size: 17px;
+      border-radius: 10px;
+      transition: 0.2s;
+      font-weight: 600;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="card-header">Velar Dance</div>
+
+    <div class="title">Запишись на занятия уже сегодня!</div>
+
+    <div class="subtitle">
+      Выбирай удобное время и стиль танцев. Мы ждём тебя в нашей дружной команде!
+      Просто нажми кнопку ниже и откроется форма записи.
+    </div>
+
+    <button class="btn" onclick="openWidget()">Записаться</button>
+  </div>
 
   <!-- Яндекс.Метрика -->
   <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
       m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
       m[i].l=1*new Date();
-      for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
-      k=e.createElement(t),a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)
-    })(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=105507617','ym');
-    ym(105507617,'init',{
-      ssr:true,
-      webvisor:true,
-      clickmap:true,
-      ecommerce:"dataLayer",
-      accurateTrackBounce:true,
-      trackLinks:true
-    });
-  </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/105507617" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
-
-  <style>
-    body {
-      margin:0;
-      padding:0;
-      font-family:Arial,sans-serif;
-      background:linear-gradient(135deg,#e6e6e6,#d1d1d1);
-      display:flex;
-      justify-content:center;
-      align-items:flex-start;
-      min-height:100vh;
-      padding-top:60px;
-    }
-    .container {
-      background:white;
-      max-width:600px;
-      width:90%;
-      padding:40px 30px;
-      border-radius:16px;
-      box-shadow:0 6px 25px rgba(0,0,0,0.12);
-      text-align:center;
-    }
-    .header {
-      width:100%;
-      background:linear-gradient(90deg,#ff7e5f,#feb47b);
-      padding:25px 0;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      border-radius:16px 16px 0 0;
-      box-shadow:0 4px 10px rgba(0,0,0,0.1);
-      margin-bottom:30px;
-    }
-    .header h1 {
-      font-family:'Poppins',sans-serif;
-      font-size:36px;
-      color:white;
-      text-shadow:1px 1px 4px rgba(0,0,0,0.3);
-      margin:0;
-    }
-    h2 {
-      font-family:'Poppins',sans-serif;
-      font-size:24px;
-      margin:20px 0 10px;
-      color:#333;
-    }
-    p {
-      font-size:16px;
-      line-height:1.5;
-      margin-bottom:30px;
-      color:#555;
-    }
-    .btn {
-      background:linear-gradient(90deg,#ff7e5f,#feb47b);
-      color:white;
-      font-family:'Poppins',sans-serif;
-      font-size:20px;
-      border:none;
-      border-radius:12px;
-      padding:14px 40px;
-      cursor:pointer;
-      box-shadow:0 4px 10px rgba(0,0,0,0.2);
-      text-decoration:none;
-      display:inline-block;
-      transition:transform 0.2s, box-shadow 0.2s;
-    }
-    .btn:hover {
-      transform:translateY(-2px);
-      box-shadow:0 6px 14px rgba(0,0,0,0.25);
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <h1>Velar Dance</h1>
-    </div>
-    <h2>Запишись на занятия уже сегодня!</h2>
-    <p>Выбирай удобное время и стиль танцев. Мы ждем тебя в нашей дружной команде! Просто нажми кнопку ниже и откроется форма записи.</p>
-    
-    <!-- Кнопка "Записаться" — теперь с retry-логикой для гарантии -->
-    <button class="btn" onclick="openWidgetSafely()">Записаться</button>
-  </div>
-
-  <!-- Виджет AppEvent (async, поэтому нужна проверка в JS) -->
-  <script id="aeWidgetScript" type="text/javascript" 
-    src="//appevent.ru/widgets/widgethandle.min.js?type=landing&widget_key=1ada18722f774a0a747b5ec63322df57" 
-    async charset="UTF-8">
-  </script>
-
-  <!-- === СКРИПТЫ ДЛЯ UTM + ЦЕЛЕЙ + ФИКС КНОПКИ === -->
-  <script>
-    // 1. Вспомогательные функции для cookies
-    function setCookie(name, value, days = 30) {
-      const d = new Date();
-      d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
-      document.cookie = name + '=' + encodeURIComponent(value) + ';expires=' + d.toUTCString() + ';path=/';
-    }
-
-    function getCookie(name) {
-      const match = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
-      return match ? decodeURIComponent(match[1]) : null;
-    }
-
-    // 2. Сохраняем UTM-метки в cookie при первой загрузке
-    (function() {
-      const params = new URLSearchParams(location.search);
-      const neededKeys = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','utm_referrer','gclid','fbclid','yclid'];
-      const utms = {};
-      let hasUtms = false;
-
-      neededKeys.forEach(key => {
-        if (params.has(key)) {
-          utms[key] = params.get(key);
-          hasUtms = true;
-        }
-      });
-
-      if (hasUtms) {
-        setCookie('utm_marks', JSON.stringify(utms), 30);
+      for (var j=0; j<document.scripts.length; j++) {
+        if (document.scripts[j].src === r) { return; }
       }
-    })();
+      k=e.createElement(t),
+      a=e.getElementsByTagName(t)[0],
+      k.async=1,
+      k.src=r,
+      a.parentNode.insertBefore(k,a)
+    })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-    // 3. Восстанавливаем UTM в URL при каждой загрузке (для Метрики)
-    window.addEventListener('load', function() {
-      if (location.search) return; // Уже есть параметры — не трогаем
-
-      const saved = getCookie('utm_marks');
-      if (!saved) return;
-
-      try {
-        const utms = JSON.parse(saved);
-        const newUrl = new URL(location);
-        Object.keys(utms).forEach(key => newUrl.searchParams.set(key, utms[key]));
-        history.replaceState(null, '', newUrl);
-      } catch(e) {}
+    ym(105507617, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
     });
+  </script>
 
-    // 4. ФИКС: Надёжное открытие виджета с retry (ждёт загрузки скрипта)
-    function openWidgetSafely() {
-      // Цель: открытие виджета (для Метрики)
+  <noscript>
+    <div><img src="https://mc.yandex.ru/watch/105507617" style="position:absolute; left:-9999px;" alt="" /></div>
+  </noscript>
+
+  <!-- AppEvent Widget -->
+  <script src="https://widgetappevent.com/.../loader.js" async></script>
+
+  <script>
+    function openWidget() {
       ym(105507617, 'reachGoal', 'WIDGET_OPEN');
 
-      // Собираем UTM-параметры
-      const urlParams = new URLSearchParams(location.search);
-      const params = new URLSearchParams();
-      const keys = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','utm_referrer','gclid','fbclid','yclid'];
-      keys.forEach(key => {
-        if (urlParams.has(key)) params.set(key, urlParams.get(key));
-      });
-      if (!params.toString()) {
-        const saved = getCookie('utm_marks');
-        if (saved) {
-          try {
-            const savedObj = JSON.parse(saved);
-            Object.keys(savedObj).forEach(key => params.set(key, savedObj[key]));
-          } catch(e) {}
-        }
-      }
-
-      let command = 'aeWidgetOpen-order_type=lesson';
-      if (params.toString()) {
-        command += '&' + params.toString();
-      }
-
-      // Retry-функция: пробуем открыть, если не готово — ждём 100ms и повторяем (max 10 попыток)
-      let attempts = 0;
-      function tryOpen() {
-        attempts++;
-        if (window.aeWidgetHandle && typeof window.aeWidgetHandle.run === 'function') {
-          window.aeWidgetHandle.run(command);
-          return;
-        }
-        if (attempts < 10) {
-          setTimeout(tryOpen, 100);
-        } else {
-          // Fallback: ставим хэш (как в оригинале) — AppEvent поймает
-          location.hash = command;
-        }
-      }
-      tryOpen();
+      // UTM для кнопки (пример)
+      const utm = "?utm_source=button&utm_medium=cta&utm_campaign=record";
+      
+      // Хэш-триггер (обязателен для AppEvent)
+      location.hash = "aeWidgetOpen-order_type=lesson" + utm;
     }
 
-    // 5. Цель: успешная отправка заявки (ловим событие от AppEvent)
-    document.addEventListener('aeWidgetEvent-lead_success', function() {
-      ym(105507617, 'reachGoal', 'LEAD_SUCCESS');
+    // После загрузки AppEvent → активируем обработку хэшей
+    window.addEventListener("ae_ready", function () {
+      if (window.aeWidgetHandle && typeof window.aeWidgetHandle.init === "function") {
+        window.aeWidgetHandle.init();
+      }
     });
   </script>
+
 </body>
 </html>
