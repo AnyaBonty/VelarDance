@@ -60,7 +60,7 @@
       align-items:center;
       border-radius:16px 16px 0 0;
       box-shadow:0 4px 10px rgba(0,0,0,0.1);
-      margin-bottom:30px;
+      margin:-40px -30px 30px -30px;
     }
     .header h1 {
       font-family:'Poppins',sans-serif;
@@ -111,12 +111,36 @@
     <h2>Запишись на занятия уже сегодня!</h2>
     <p>Выбирай удобное время и стиль танцев. Мы ждем тебя в нашей дружной команде! Просто нажми кнопку ниже и откроется форма записи.</p>
 
-    <!-- Кнопка "Записаться" через ссылку с хэшем -->
-    <a class="btn" href="#aeWidgetOpen-order_type=lesson">Записаться</a>
+    <!-- Кнопка "Записаться" + цель Метрики -->
+    <a class="btn"
+       id="signupBtn"
+       href="#aeWidgetOpen-order_type=lesson"
+       onclick="ym(105507617, 'reachGoal', 'signup_button');">
+       Записаться
+    </a>
   </div>
 
+  <!-- Авто-добавление UTM в хэш -->
+  <script>
+    (function() {
+      const btn = document.getElementById('signupBtn');
+      const urlParams = new URLSearchParams(window.location.search);
+      const utm = [];
+
+      urlParams.forEach((value, key) => {
+        if (key.startsWith("utm_")) utm.push(key + "=" + value);
+      });
+
+      if (utm.length > 0) {
+        btn.href = "#aeWidgetOpen-order_type=lesson&" + utm.join("&");
+      }
+    })();
+  </script>
+
   <!-- Виджет AppEvent -->
-  <script id="aeWidgetScript" type="text/javascript" src="//appevent.ru/widgets/widgethandle.min.js?type=landing&widget_key=1ada18722f774a0a747b5ec63322df57" async charset="UTF-8"></script>
+  <script id="aeWidgetScript" type="text/javascript"
+          src="//appevent.ru/widgets/widgethandle.min.js?type=landing&widget_key=1ada18722f774a0a747b5ec63322df57"
+          async charset="UTF-8"></script>
 
 </body>
 </html>
