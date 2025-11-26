@@ -3,120 +3,115 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Запись на занятия</title>
+  <title>Запись на занятия — Velar Dance</title>
 
   <!-- Яндекс.Метрика -->
   <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
-      m[i]=m[i]function(){(m[i].a=m[i].a[]).push(arguments)};
+      m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
       m[i].l=1*new Date();
       for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
       k=e.createElement(t),a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)
     })(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=105507617','ym');
-
     ym(105507617,'init',{
       ssr:true,
       webvisor:true,
       clickmap:true,
       ecommerce:"dataLayer",
       accurateTrackBounce:true,
-      trackLinks:true
+      trackLinks:true,
+      hashTracking: true            // ← важно для хэша
     });
   </script>
-  <noscript>
-    <div><img src="https://mc.yandex.ru/watch/105507617" style="position:absolute; left:-9999px;" alt="" /></div>
-  </noscript>
+  <noscript><div><img src="https://mc.yandex.ru/watch/105507617" style="position:absolute;left:-9999px;" alt="" /></div></noscript>
 
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
-
   <style>
-    body {
-      margin:0;
-      padding:0;
-      font-family:Arial,sans-serif;
-      background:linear-gradient(135deg,#e6e6e6,#d1d1d1);
-      display:flex;
-      justify-content:center;
-      align-items:flex-start;
-      min-height:100vh;
-      padding-top:60px;
-    }
-    .container {
-      background:white;
-      max-width:600px;
-      width:90%;
-      padding:40px 30px;
-      border-radius:16px;
-      box-shadow:0 6px 25px rgba(0,0,0,0.12);
-      text-align:center;
-    }
-    .header {
-      width:100%;
-      background:linear-gradient(90deg,#ff7e5f,#feb47b);
-      padding:25px 0;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      border-radius:16px 16px 0 0;
-      box-shadow:0 4px 10px rgba(0,0,0,0.1);
-      margin-bottom:30px;
-    }
-    .header h1 {
-      font-family:'Poppins',sans-serif;
-      font-size:36px;
-      color:white;
-      text-shadow:1px 1px 4px rgba(0,0,0,0.3);
-      margin:0;
-    }
-    h2 {
-      font-family:'Poppins',sans-serif;
-      font-size:24px;
-      margin:20px 0 10px;
-      color:#333;
-    }
-    p {
-      font-size:16px;
-      line-height:1.5;
-      margin-bottom:30px;
-      color:#555;
-    }
-    .btn {
-      background:linear-gradient(90deg,#ff7e5f,#feb47b);
-      color:white;
-      font-family:'Poppins',sans-serif;
-      font-size:20px;
-      border:none;
-      border-radius:12px;
-      padding:14px 40px;
-      cursor:pointer;
-      box-shadow:0 4px 10px rgba(0,0,0,0.2);
-      text-decoration:none;
-      display:inline-block;
-      transition:transform 0.2s, box-shadow 0.2s;
-    }
-    .btn:hover {
-      transform:translateY(-2px);
-      box-shadow:0 6px 14px rgba(0,0,0,0.25);
-    }
+    body{margin:0;padding:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#e6e6e6,#d1d1d1);display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding-top:60px;}
+    .container{background:white;max-width:600px;width:90%;padding:40px 30px;border-radius:16px;box-shadow:0 6px 25px rgba(0,0,0,0.12);text-align:center;}
+    .header{width:100%;background:linear-gradient(90deg,#ff7e5f,#feb47b);padding:25px 0;display:flex;justify-content:center;align-items:center;border-radius:16px 16px 0 0;box-shadow:0 4px 10px rgba(0,0,0,0.1);margin-bottom:30px;}
+    .header h1{font-family:'Poppins',sans-serif;font-size:36px;color:white;text-shadow:1px 1px 4px rgba(0,0,0,0.3);margin:0;}
+    h2{font-family:'Poppins',sans-serif;font-size:24px;margin:20px 0 10px;color:#333;}
+    p{font-size:16px;line-height:1.5;margin-bottom:30px;color:#555;}
+    .btn{background:linear-gradient(90deg,#ff7e5f,#feb47b);color:white;font-family:'Poppins',sans-serif;font-size:20px;border:none;border-radius:12px;padding:14px 40px;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,0.2);text-decoration:none;display:inline-block;transition:transform .2s,box-shadow .2s;}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,0.25);}
   </style>
 </head>
 <body>
-
   <div class="container">
-    <div class="header">
-      <h1>Velar Dance</h1>
-    </div>
-
+    <div class="header"><h1>Velar Dance</h1></div>
     <h2>Запишись на занятия уже сегодня!</h2>
-    <p>Выбирай удобное время и стиль танцев. Мы ждем тебя в нашей дружной команде! Просто нажми кнопку ниже и откроется форма записи.</p>
-
-    <!-- Кнопка "Записаться" через ссылку с хэшем -->
-    <a class="btn" href="#aeWidgetOpen-order_type=lesson">Записаться</a>
+    <p>Выбирай удобное время и стиль танцев. Мы ждем тебя в нашей дружной команде!</p>
+    
+    <!-- Рабочая кнопка (и выглядит как кнопка, и гарантированно открывает виджет) -->
+    <button class="btn" onclick="openWidgetSafely()">Записаться</button>
   </div>
 
   <!-- Виджет AppEvent -->
-  <script id="aeWidgetScript" type="text/javascript" src="//appevent.ru/widgets/widgethandle.min.js?type=landing&widget_key=1ada18722f774a0a747b5ec63322df57" async charset="UTF-8"></script>
+  <script id="aeWidgetScript" 
+    src="//appevent.ru/widgets/widgethandle.min.js?type=landing&widget_key=1ada18722f774a0a747b5ec63322df57" 
+    async charset="UTF-8"></script>
 
+  <!-- === ВСЁ ДЛЯ UTM + ЦЕЛЕЙ МЕТРИКИ === -->
+  <script>
+    // 1. Cookie-функции
+    function setCookie(n,v,d=30){let e=new Date;e.setTime(e.getTime()+d*864e5);document.cookie=n+"="+encodeURIComponent(v)+";expires="+e.toUTCString()+";path=/";}
+    function getCookie(n){let m=document.cookie.match("(?:^|; )"+n+"=([^;]*)");return m?decodeURIComponent(m[1]):null;}
+
+    // 2. Сохраняем UTM при первой загрузке
+    (function(){
+      const p=new URLSearchParams(location.search);
+      const keys=['utm_source','utm_medium','utm_campaign','utm_term','utm_content','utm_referrer','gclid','fbclid','yclid'];
+      const o={};
+      let has=false;
+      keys.forEach(k=>{if(p.has(k)){o[k]=p.get(k);has=true;}});
+      if(has) setCookie('utm_marks',JSON.stringify(o),30);
+    })();
+
+    // 3. Восстанавливаем UTM в URL (для Метрики)
+    window.addEventListener('load',()=>{
+      if(location.search) return;
+      const s=getCookie('utm_marks');
+      if(!s) return;
+      try{
+        const o=JSON.parse(s);
+        const u=new URL(location);
+        Object.keys(o).forEach(k=>u.searchParams.set(k,o[k]));
+        history.replaceState(null,'',u);
+      }catch(e){}
+    });
+
+    // 4. Самая надёжная функция открытия виджета
+    function openWidgetSafely(){
+      // цель — открытие виджета
+      ym(105507617,'reachGoal','WIDGET_OPEN');
+
+      const params=new URLSearchParams();
+      const urlParams=new URLSearchParams(location.search);
+      const keys=['utm_source','utm_medium','utm_campaign','utm_term','utm_content','utm_referrer','gclid','fbclid','yclid'];
+      keys.forEach(k=>{if(urlParams.has(k)) params.set(k,urlParams.get(k));});
+      if(!params.toString()){
+        const saved=getCookie('utm_marks');
+        if(saved) try{const o=JSON.parse(saved);Object.keys(o).forEach(k=>params.set(k,o[k]));}catch(e){}
+      }
+
+      let command='aeWidgetOpen-order_type=lesson';
+      if(params.toString()) command+='&'+params.toString();
+
+      // пробуем через официальный API
+      if(window.aeWidgetHandle && typeof window.aeWidgetHandle.run==='function'){
+        window.aeWidgetHandle.run(command);
+        return;
+      }
+
+      // если API ещё не загрузился — ставим хэш (стандартный способ AppEvent)
+      location.hash=command;
+    }
+
+    // 5. Цель «Успешная заявка»
+    document.addEventListener('aeWidgetEvent-lead_success', function(){
+      ym(105507617,'reachGoal','LEAD_SUCCESS');
+    });
+  </script>
 </body>
 </html>
