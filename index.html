@@ -117,6 +117,14 @@
 
   <!-- Виджет AppEvent -->
   <script id="aeWidgetScript" type="text/javascript" src="//appevent.ru/widgets/widgethandle.min.js?type=landing&widget_key=1ada18722f774a0a747b5ec63322df57" async charset="UTF-8"></script>
+  
+<script>
+// Отслеживание успешной заявки из AppEvent
+window.addEventListener("ae_lead_success", function (event) {
+    ym(105507617, 'reachGoal', 'LEAD_SUCCESS');
+    console.log("LEAD_SUCCESS:", event.detail);
+});
+</script>
 
 </body>
 </html>
