@@ -87,7 +87,7 @@
       Просто нажми кнопку ниже и откроется форма записи.
     </div>
 
-    <button class="btn" onclick="openWidget()">Записаться</button>
+    <button class="btn">Записаться</button>
   </div>
 
   <!-- Яндекс.Метрика -->
@@ -120,21 +120,41 @@
   <script src="https://widgetappevent.com/.../loader.js" async></script>
 
   <script>
+    // Функция открытия виджета
     function openWidget() {
-      ym(105507617, 'reachGoal', 'WIDGET_OPEN');
-
-      // UTM для кнопки (пример)
       const utm = "?utm_source=button&utm_medium=cta&utm_campaign=record";
-      
-      // Хэш-триггер (обязателен для AppEvent)
-      location.hash = "aeWidgetOpen-order_type=lesson" + utm;
+
+      if (window.aeWidgetHandle && typeof window.aeWidgetHandle.open === "function") {
+        // Если виджет уже загружен — открываем напрямую
+        window.aeWidgetHandle.open("order_type=lesson" + utm);
+      } else {
+        // Если виджет еще не готов — сохраняем вызов
+        window.pendingWidgetOpen = "order_type=lesson" + utm;
+      }
     }
 
-    // После загрузки AppEvent → активируем обработку хэшей
+    // Когда виджет загружается и становится готов
     window.addEventListener("ae_ready", function () {
       if (window.aeWidgetHandle && typeof window.aeWidgetHandle.init === "function") {
         window.aeWidgetHandle.init();
       }
+
+      // Если клик был до загрузки — открываем виджет
+      if (window.pendingWidgetOpen) {
+        window.aeWidgetHandle.open(window.pendingWidgetOpen);
+        window.pendingWidgetOpen = null;
+      }
+    });
+
+    // Привязка кнопки после загрузки страницы
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelector('.btn').addEventListener('click', openWidget);
+    });
+
+    // Отслеживание успешной заявки (LEAD_SUCCESS)
+    window.addEventListener("ae_lead_success", function(event) {
+      ym(105507617, 'reachGoal', 'LEAD_SUCCESS');
+      console.log("Заявка успешна!", event.detail);
     });
   </script>
 
